@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="pokedex-container">
+        <h1>Pokedex</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter Pokemon name">
+            <button id="searchButton">Search</button>
+        </div>
+        <div class="pokemon-info">
+            <h2 id="pokemonName"></h2>
+            <p id="pokemonId"></p>
+            <p id="pokemonType"></p>
+            <p id="pokemonHeight"></p>
+            <p id="pokemonWeight"></p>
+            <p id="abilitiesList"></p>
+            <p id="formsList"></p>
+            <div class="stats-container">
+                <div class="stat">
+                    <p>HP</p>
+                    <div class="stat-bar" id="hpStat"></div>
+                </div>
+                <div class="stat">
+                    <p>Attack</p>
+                    <div class="stat-bar" id="attackStat"></div>
+                </div>
+                <div class="stat">
+                    <p>Defense</p>
+                    <div class="stat-bar" id="defenseStat"></div>
+                </div>
+                <div class="stat">
+                    <p>Special Attack</p>
+                    <div class="stat-bar" id="specialAttackStat"></div>
+                </div>
+                <div class="stat">
+                    <p>Special Defense</p>
+                    <div class="stat-bar" id="specialDefenseStat"></div>
+                </div>
+                <div class="stat">
+                    <p>Speed</p>
+                    <div class="stat-bar" id="speedStat"></div>
+                </div>
+            </div>
+        </div>
+        <div class="radar-chart-container" id="radarChartContainer">
+            <canvas id="radarChart"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+
+
