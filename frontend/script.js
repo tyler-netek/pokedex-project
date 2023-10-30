@@ -36,14 +36,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 pokemonWeight.textContent = `Weight: ${data.weight}`;
                 abilitiesList.textContent = `Abilities: ${data.abilities.join(", ").toUpperCase()}`;
                 formsList.textContent = `Forms: ${data.forms.join(", ").toUpperCase()}`;
-                hpStat.style.width = `${data.baseStats.hp}%`;
-                attackStat.style.width = `${data.baseStats.attack}%`;
-                defenseStat.style.width = `${data.baseStats.defense}%`;
-                specialAttackStat.style.width = `${data.baseStats.specialAttack}%`;
-                specialDefenseStat.style.width = `${data.baseStats.specialDefense}%`;
-                speedStat.style.width = `${data.baseStats.speed}%`;
 
-                radarChartContainer.innerHTML = ""; 
+                const totalStats = data.baseStats.hp + data.baseStats.attack +
+                    data.baseStats.defense + data.baseStats.specialAttack +
+                    data.baseStats.specialDefense + data.baseStats.speed;
+
+                const hpPercentage = (data.baseStats.hp / totalStats) * 100;
+                const attackPercentage = (data.baseStats.attack / totalStats) * 100;
+                const defensePercentage = (data.baseStats.defense / totalStats) * 100;
+                const specialAttackPercentage = (data.baseStats.specialAttack / totalStats) * 100;
+                const specialDefensePercentage = (data.baseStats.specialDefense / totalStats) * 100;
+                const speedPercentage = (data.baseStats.speed / totalStats) * 100;
+
+                hpStat.style.width = `${hpPercentage}%`;
+                attackStat.style.width = `${attackPercentage}%`;
+                defenseStat.style.width = `${defensePercentage}%`;
+                specialAttackStat.style.width = `${specialAttackPercentage}%`;
+                specialDefenseStat.style.width = `${specialDefensePercentage}%`;
+                speedStat.style.width = `${speedPercentage}%`;
+
+                radarChartContainer.innerHTML = "";
                 if (data.radarChartImage) {
                     const radarChartImage = document.createElement("img");
                     radarChartImage.src = data.radarChartImage;
@@ -52,8 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 resetPokemonInfo();
                 console.error(`Error fetching Pokemon data: ${response.status}`);
-                
-                
+
                 if (response.status === 404 || response.status === 500) {
                     setTimeout(() => {
                         location.reload();
@@ -65,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error fetching Pokemon data: ", error);
             setTimeout(() => {
                 location.reload();
-            }, 3000); 
+            }, 3000);
         }
     });
 
